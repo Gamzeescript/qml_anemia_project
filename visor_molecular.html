@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Visor Molecular - Charla QML & Anemias</title>
+    <!-- Importar la librería 3Dmol.js (CDN estable de Cloudflare) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/3Dmol/2.0.4/3Dmol-min.js"></script>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #1e1e1e; 
+            color: white; 
+            margin: 0; 
+            padding: 20px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+        }
+        .controles { 
+            margin-bottom: 20px; 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 10px; 
+            justify-content: center; 
+        }
+        button { 
+            background-color: #4285f4; 
+            color: white; 
+            border: none; 
+            padding: 10px 15px; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            transition: 0.3s; 
+        }
+        button:hover { 
+            background-color: #3367d6; 
+        }
+        button.sano { background-color: #0f9d58; } /* Color verde distintivo para el modelo sano */
+        button.sano:hover { background-color: #0b8043; }
+        #visor-3d { 
+            width: 850px; 
+            height: 500px; 
+            background-color: #2d2d2d; 
+            border-radius: 10px; 
+            border: 2px solid #4285f4; 
+            position: relative; 
+            max-width: 100%;
+            overflow: hidden;
+        }
+        .descripcion { 
+            margin-top: 15px; 
+            font-size: 1.1em; 
+            max-width: 850px; 
+            text-align: center; 
+            color: #a0c3ff; 
+            line-height: 1.4em; 
+            padding: 0 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Simulación Molecular de Anemias vs. Estado Sana (Visor 3D)</h2>
+    
+    <div class="controles">
+        <button class="sano" onclick="cargarModelo('sana')">0. Hemoglobina Sana (Control)</button>
+        <button onclick="cargarModelo('ferropenica')">1. Ferropénica (Hierro)</button>
+        <button onclick="cargarModelo('falciforme')">2. Falciforme (Mutación)</button>
+        <button onclick="cargarModelo('megaloblastica')">3. Megaloblástica (Vit B12)</button>
+        <button onclick="cargarModelo('talasemica')">4. Talasémica (Desequilibrio Cadenas)</button>
+    </div>
+
+    <!-- Contenedor donde WebGL dibujará la molécula -->
+    <div id="visor-3d"></div>
+    
+    <div id="texto-descripcion" class="descripcion">
+        Cargando modelo inicial...
+    </div>
+
+    <script>
+        let viewer = null;
+
+        // Inicializar el visor de forma segura al cargar la página y mostrar el modelo sano por defecto
+        window.addEventListener('DOMContentLoaded', (event) => {
+            let element = document.getElementById('visor-3d');
+            viewer = $3Dmol.createViewer(element, { backgroundColor: "#2d2d2d" });
+            cargarModelo('sana'); 
+        });
+
+        async function cargarModelo(tipo) {
+            if (!viewer) return;
+            viewer.clear();
+            let descripcion = "";
+            let urlModelo = "";
+
+            if (tipo === 'sana') {
+                urlModelo = "https://files.rcsb.org/download/1GZX.pdb";
+                descripcion = "<b>Hemoglobina Sana (Control Normal):</b> Estructura cuaternaria simétrica y funcional. Los átomos de <b>Hierro (esferas verdes)</b> en los 4 grupos Hemo poseen la energía de enlace óptima para capturar y transportar oxígeno sin restricciones.";
+            } else if (tipo === 'ferropenica') {
+                urlModelo = "https://files.rcsb.org/download/1GZX.pdb";
+                descripcion = "<b>Anemia Ferropénica:</b> Observa el átomo de Hierro (esfera roja) en el centro del grupo Hemo. Sin este metal de transición, el campo cristalino colapsa y el oxígeno no puede unirse.";
+            } else if (tipo === 'falciforme') {
+                urlModelo = "https://files.rcsb.org/download/2HBS.pdb";
+                descripcion = "<b>Anemia Falciforme:</b> Las esferas color magenta muestran la mutación en la posición 6 (Valina). Este error de un solo aminoácido crea un parche pegajoso que deforma el glóbulo rojo completo.";
+            } else if (tipo === 'megaloblastica') {
+                urlModelo = "https://files.rcsb.org/download/2BB5.pdb";
+                descripcion = "<b>Anemia Megaloblástica:</b> Estructura de la Vitamina B12. La esfera naranja es el Cobalto (Co3+). Aquí simulamos el tunelamiento de electrones crítico para la síntesis de ADN celular.";
+            } else if (tipo === 'talasemica') {
+                urlModelo = "https://files.rcsb.org/download/4HHB.pdb";
+                descripcion = "<b>Anemia Talasémica:</b> La hemoglobina requiere un balance simétrico entre cadenas Alfa (azul) y Beta (rojo transparente). En la talasemia, el déficit de producción de cadenas Beta rompe la simetría cuaternaria, generando inestabilidad estructural.";
+            }
+
+            document.getElementById('texto-descripcion').innerHTML = descripcion;
+
+            if (urlModelo) {
+                try {
+                    let response = await fetch(urlModelo);
+                    if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
+                    let pdbData = await response.text();
+
+                    viewer.addModel(pdbData, "pdb");
+
+                    // Aplicar estilos específicos para cada estado
+                    if (tipo === 'sana') {
+                        viewer.setStyle({}, {cartoon: {color: 'spectrum'}}); // Estructura cuaternaria armónica
+                        viewer.setStyle({resn: 'HEM'}, {stick: {colorscheme: 'greenCarbon'}}); // Grupos hemo estables
+                        viewer.setStyle({atom: 'FE'}, {sphere: {color: '#00ff00', radius: 1.8}}); // Hierro activo en verde brillante
+                    } else if (tipo === 'ferropenica') {
+                        viewer.setStyle({}, {cartoon: {color: 'white', opacity: 0.4}}); 
+                        viewer.setStyle({resn: 'HEM'}, {stick: {colorscheme: 'cyanCarbon'}}); 
+                        viewer.setStyle({atom: 'FE'}, {sphere: {color: 'red', radius: 1.8}}); 
+                    } else if (tipo === 'falciforme') {
+                        viewer.setStyle({}, {cartoon: {color: 'spectrum'}});
+                        viewer.setStyle({chain: ['B', 'D'], resi: 6}, {sphere: {color: 'magenta', radius: 1.8}}); 
+                    } else if (tipo === 'megaloblastica') {
+                        viewer.setStyle({}, {cartoon: {color: 'gray', opacity: 0.5}}); 
+                        viewer.setStyle({resn: 'B12'}, {stick: {colorscheme: 'greenCarbon'}}); 
+                        viewer.setStyle({atom: 'CO'}, {sphere: {color: 'orange', radius: 2.0}}); 
+                    } else if (tipo === 'talasemica') {
+                        viewer.setStyle({chain: 'A'}, {cartoon: {color: '#4285f4'}}); // Alfa 1
+                        viewer.setStyle({chain: 'C'}, {cartoon: {color: '#4285f4'}}); // Alfa 2
+                        viewer.setStyle({chain: 'B'}, {cartoon: {color: '#ea4335', opacity: 0.25}}); // Beta reducida
+                        viewer.setStyle({chain: 'D'}, {cartoon: {color: '#ea4335', opacity: 0.25}}); // Beta reducida
+                    }
+
+                    viewer.zoomTo();
+                    viewer.resize();
+                    viewer.render();
+
+                } catch (error) {
+                    console.error("Error al cargar el PDB:", error);
+                    document.getElementById('texto-descripcion').innerHTML = "<b>Aviso:</b> No se pudo cargar el modelo. Recuerda abrir este archivo mediante un servidor local.";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
