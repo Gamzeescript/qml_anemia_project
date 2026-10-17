@@ -1,0 +1,2 @@
+Modo sin internet: descarga desde rcsb.org los archivos 1GZX.pdb, 2HBS.pdb y 1BMT.pdb,
+guárdalos en esta carpeta y abre el visor con: python visor_3d/servir.py

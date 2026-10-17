@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Visor molecular - Charla QML</title>
+  <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <h2>Simulación molecular de anemias</h2>
+  <div class="controles">
+    <button data-modelo="ferropenica">1. Ferropénica (hierro)</button>
+    <button data-modelo="falciforme">2. Falciforme (mutación)</button>
+    <button data-modelo="talasemia">3. Talasemia (cadenas α/β)</button>
+    <button data-modelo="megaloblastica">4. Megaloblástica (B12)</button>
+    <button id="btn-beta" class="sec">Quitar cadenas β</button>
+  </div>
+  <div id="visor-3d"></div>
+  <div id="texto-descripcion" class="descripcion">Selecciona un modelo para visualizar la estructura a nivel atómico.</div>
+  <script src="modelos.js"></script>
+  <script src="visor.js"></script>
+</body>
+</html>
