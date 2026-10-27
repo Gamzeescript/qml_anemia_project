@@ -1,7 +1,6 @@
 <div align="center">
 
-### ⚛️ Aprendiendo de Computación cuántica mientras construimos un modelo sobre la molécula de Hierro
-⚛️
+### ⚛️ Quantum Machine Learning - De Qubits a Moléculas ⚛️
 
 ---
 
@@ -25,22 +24,97 @@ Bienvenido al nexo del proyecto. Este repositorio aborda un mismo problema clín
 </details>
 
 <details id="#-estructura-del-proyecto">
-<summary><b>📐 Estructura del pryecto</b></summary>
+<summary><b>📐 Estructura del proyecto</b></summary>
+
+</details>
+
+<details id="#-estructura-del-proyecto">
+<summary><b>📐 Estructura del proyecto</b></summary>
 
 </details>
 
 <details id="#-instalacion-del-proyecto">
 <summary><b>🚀 Instalación del proyecto</b></summary>
 
+Sigue estos comandos desde tu terminal para configurar de forma limpia todo el ecosistema de desarrollo:
+
+### 1. Abrir el entorno de comandos
+Abre la aplicación **Anaconda Prompt** desde el menú de inicio de tu computadora y navega hasta la ruta local de tu repositorio:
+```bash
+cd C:\Users\nombreusuario\Documents\GitHub\qml_anemia_project
+```
+
+### 2. Crear un entorno virtual limpio
+Crea un entorno aislado utilizando una versión estable de Python (recomendado **Python 3.10** para compatibilidad óptima con Qiskit Nature):
+```bash
+conda create -n qml_env python=3.10 -y
+```
+
+### 3. Activar el entorno virtual
+Activa el entorno para que todas las instalaciones posteriores operen dentro de este espacio aislado:
+```bash
+conda activate qml_env
+```
+*(Sabrás que está activo porque el indicador de la terminal cambiará a `(qml_env)`)*.
+
+### 4. Instalar dependencias base y binarios (vía Conda)
+Instala los componentes pesados y binarios que requieren compilación en C utilizando el canal oficial `conda-forge`:
+```bash
+conda install -c conda-forge pyscf numpy scikit-learn qiskit -y
+```
+
+### 5. Instalar librerías cuánticas especializadas (vía `pip`)
+Completa la instalación del stack cuántico ejecutando:
+```bash
+pip install qiskit-nature qiskit-machine-learning qiskit-algorithms
+```
+*(Alternativamente, si prefieres usar el archivo de requerimientos del proyecto, puedes ejecutar: `pip install -r requirements.txt`)*.
+
+---
+
+## ⚙️ Configuración en Visual Studio Code
+
+Para vincular el entorno en VS Code y eliminar cualquier advertencia de Pylance:
+1. Abre la carpeta del proyecto en **VS Code**.
+2. Presiona **`Ctrl + Shift + P`** para abrir la paleta de comandos.
+3. Escribe y selecciona: **`Python: Select Interpreter`**.
+4. Elige la ruta correspondiente al entorno creado: **`Python 3.10.22 (qml_env)`**.
+
+---
+
+## 🏃‍♂️ Ejecución del Proyecto
+
+Abre una nueva terminal integrada dentro de VS Code (`Terminal > New Terminal`), verifica que aparezca `(qml_env)` al inicio de la línea y arranca el menú interactivo principal:
+```bash
+python main.py
+```
+
+---
+
+Para esta parte si hay dudas, porfavor contactar al developer
+
+## 🌐 Visor Molecular 3D Interactivo
+
+Para visualizar las estructuras tridimensionales de las moléculas (control sano y tipos de anemia):
+1. Abre el archivo `simulador_molecular.html` en cualquier navegador web moderno (Chrome, Edge, Firefox).
+2. Utiliza los botones interactivos para alternar entre el modelo sano (control) y las patologías representadas.
+
 </details>
 
 
 
-<details id="#-visión-general-del-sistema">
-<summary><b>🌌 Visión General</b></summary>
+<details id="#-requisitos-del-sistema">
+<summary><b>🛠️ Requisitos del sistema</b></summary>
+
+Antes de comenzar, asegúrate de contar con lo siguiente en tu equipo (entorno Windows):
+* **[Anaconda](https://www.anaconda.com/) o [Miniforge](https://github.com/conda-forge/miniforge):** Esencial para gestionar entornos virtuales y evitar errores de compilación con las librerías de C/C++ (como PySCF).
+* **[Visual Studio Code (VS Code)](https://code.visualstudio.com/):** Entorno de desarrollo recomendado, con las extensiones de **Python** y **Pylance** instaladas.
+
+</details>
+
 
 <details id="#-sección-02-preguntas-frecuentes-faq">
-<summary><b>❓ SECCIÓN 02: Preguntas Frecuentes (FAQ)</b></summary>
+<summary><b>❓ FAQ</b></summary>
 <br/>
 
 ### 💡 Dudas Comunes sobre el Núcleo Cuántico
@@ -73,7 +147,7 @@ Bienvenido al nexo del proyecto. Este repositorio aborda un mismo problema clín
 
 
 <details id="#-sección-03-glosario-cuántico">
-<summary><b>📖  SECCIÓN 03: Glosario</b></summary>
+<summary><b>📖 Glosario</b></summary>
 
 **Qubit**: unidad de información cuántica; puede estar en superposición de 0 y 1.
 Entrelazamiento: correlación cuántica entre qubits que no se describe qubit por qubit;
