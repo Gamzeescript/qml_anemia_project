@@ -1,5 +1,4 @@
 qiskit==2.5.2
-qiskit-nature
 qiskit-machine-learning==0.9.1
 qiskit-algorithms==0.4.0
 qiskit-nature==0.8.0
