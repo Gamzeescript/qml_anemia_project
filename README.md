@@ -8,15 +8,8 @@
 > *"Si crees que entiendes la mecánica cuántica, es que no entiendes la mecánica cuántica."*  
 > — **Richard Feynman**
 
-<br/>
-
-<!-- 🧭 MENÚ DE NAVEGACIÓN RÁPIDA (ENLACES INTERNOS) -->
-| [🌌 Visión General](#-visión-general-del-sistema) | [🚀 Instalación](#-sección-01-instalación-del-multiverso) | [❓ FAQ](#-sección-02-preguntas-frecuentes-faq) | [📖 Glosario](#-sección-03-glosario-cuántico) |
-| :---: | :---: | :---: | :---: |
-
 </div>
 
-<br/>
 
 <details id="#-visión-general-del-sistema">
 <summary><b>🌌 Visión General</b></summary>
@@ -30,6 +23,21 @@ Bienvenido al nexo del proyecto. Este repositorio aborda un mismo problema clín
 2. **Simulación Cuántica Molecular:** Uso de VQE (Variational Quantum Eigensolver) para calcular energías del estado fundamental sobre espacios activos en moléculas de interés biológico (como el núcleo del hemo o la vitamina B12).
 
 </details>
+
+<details id="#-estructura-del-proyecto">
+<summary><b>📐 Estructura del pryecto</b></summary>
+
+</details>
+
+<details id="#-instalacion-del-proyecto">
+<summary><b>🚀 Instalación del proyecto</b></summary>
+
+</details>
+
+
+
+<details id="#-visión-general-del-sistema">
+<summary><b>🌌 Visión General</b></summary>
 
 <details id="#-sección-02-preguntas-frecuentes-faq">
 <summary><b>❓ SECCIÓN 02: Preguntas Frecuentes (FAQ)</b></summary>
