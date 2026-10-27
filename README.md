@@ -153,90 +153,6 @@ Antes de comenzar, asegúrate de contar con lo siguiente en tu equipo (entorno W
 * **[Anaconda](https://www.anaconda.com/) o [Miniforge](https://github.com/conda-forge/miniforge):** Esencial para gestionar entornos virtuales y evitar errores de compilación con las librerías de C/C++ (como PySCF).
 * **[Visual Studio Code (VS Code)](https://code.visualstudio.com/):** Entorno de desarrollo recomendado, con las extensiones de **Python** y **Pylance** instaladas.
 
-
-## 🚀 Guía de Instalación y Configuración Paso a Paso (Linux)
-
-Puedes elegir entre la instalación nativa con **`venv` / `pip`** (recomendada para la mayoría de distros de Linux) o mediante **Conda**.
-
-### Opción A: Instalación Nativa en Linux (`venv` + `pip`)
-
-#### 1. Instalar dependencias del sistema operativo
-Abre la terminal de Linux (`Ctrl + Alt + T`) e instala las herramientas esenciales de compilación y headers de Python:
-```bash
-sudo apt update
-sudo apt install -y python3-pip python3-venv python3-dev build-essential
-```
-
-#### 2. Clonar / Ubicarte en el directorio del proyecto
-Navega hasta la carpeta local de tu repositorio:
-```bash
-cd ~/qml_anemia_project
-```
-
-#### 3. Crear el entorno virtual
-Crea un entorno aislado llamado `qml_env`:
-```bash
-python3 -m venv qml_env
-```
-
-#### 4. Activar el entorno virtual
-```bash
-source qml_env/bin/activate
-```
-*(Verás la etiqueta `(qml_env)` al inicio de la línea de comandos).*
-
-#### 5. Actualizar `pip` e instalar dependencias
-```bash
-pip install --upgrade pip
-pip install -r requirements.txt
-```
-> **Nota:** Si no utilizas `requirements.txt`, puedes instalar las librerías manualmente:
-> ```bash
-> pip install numpy scikit-learn pyscf qiskit qiskit-nature qiskit-machine-learning qiskit-algorithms
-> ```
-
----
-
-### Opción B: Instalación con Conda / Miniforge en Linux
-
-Si prefieres usar Conda en Linux:
-
-```bash
-# 1. Crear entorno con Python 3.10
-conda create -n qml_env python=3.10 -y
-
-# 2. Activar entorno
-conda activate qml_env
-
-# 3. Instalar librerías
-conda install -c conda-forge pyscf numpy scikit-learn qiskit -y
-pip install qiskit-nature qiskit-machine-learning qiskit-algorithms
-```
-
----
-
-## ⚙️ Configuración en Visual Studio Code
-
-Para vincular el entorno en VS Code y habilitar el autocompletado de Pylance:
-
-1. Abre el proyecto en VS Code: `code .`
-2. Presiona **`Ctrl + Shift + P`** para abrir la paleta de comandos.
-3. Selecciona **`Python: Select Interpreter`**.
-4. Selecciona la ruta de tu entorno:
-   * **Para venv nativo:** `./qml_env/bin/python`
-   * **Para Conda:** `~/miniconda3/envs/qml_env/bin/python` (o la ruta correspondiente).
-
----
-
-## 🏃‍♂️ Ejecución del Proyecto
-
-Con el entorno activo en tu terminal de Linux, ejecuta el punto de entrada principal:
-
-```bash
-python3 main.py
-```
-
-
 </details>
 
 
@@ -429,6 +345,89 @@ Valores obtenidos en las pruebas; en tu equipo pueden variar un poco, sobre todo
 - Con hemoglobina y VCM no se distinguen la anemia ferropénica y la talasemia; el diagnóstico real usa más análisis.
 - El modelo Fe–O es un modelo didáctico (dos átomos, base STO-3G, 2 electrones en 2 orbitales), no la hemoglobina real.
 - No hay ventaja cuántica demostrada en estos problemas: la SVM clásica iguala o supera al VQC y es mucho más rápida.
+
+
+## 🚀 Guía de Instalación y Configuración Paso a Paso (Linux)
+
+Puedes elegir entre la instalación nativa con **`venv` / `pip`** (recomendada para la mayoría de distros de Linux) o mediante **Conda**.
+
+### Opción A: Instalación Nativa en Linux (`venv` + `pip`)
+
+#### 1. Instalar dependencias del sistema operativo
+Abre la terminal de Linux (`Ctrl + Alt + T`) e instala las herramientas esenciales de compilación y headers de Python:
+```bash
+sudo apt update
+sudo apt install -y python3-pip python3-venv python3-dev build-essential
+```
+
+#### 2. Clonar / Ubicarte en el directorio del proyecto
+Navega hasta la carpeta local de tu repositorio:
+```bash
+cd ~/qml_anemia_project
+```
+
+#### 3. Crear el entorno virtual
+Crea un entorno aislado llamado `qml_env`:
+```bash
+python3 -m venv qml_env
+```
+
+#### 4. Activar el entorno virtual
+```bash
+source qml_env/bin/activate
+```
+*(Verás la etiqueta `(qml_env)` al inicio de la línea de comandos).*
+
+#### 5. Actualizar `pip` e instalar dependencias
+```bash
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+> **Nota:** Si no utilizas `requirements.txt`, puedes instalar las librerías manualmente:
+> ```bash
+> pip install numpy scikit-learn pyscf qiskit qiskit-nature qiskit-machine-learning qiskit-algorithms
+> ```
+
+---
+
+### Opción B: Instalación con Conda / Miniforge en Linux
+
+Si prefieres usar Conda en Linux:
+
+```bash
+# 1. Crear entorno con Python 3.10
+conda create -n qml_env python=3.10 -y
+
+# 2. Activar entorno
+conda activate qml_env
+
+# 3. Instalar librerías
+conda install -c conda-forge pyscf numpy scikit-learn qiskit -y
+pip install qiskit-nature qiskit-machine-learning qiskit-algorithms
+```
+
+---
+
+## ⚙️ Configuración en Visual Studio Code
+
+Para vincular el entorno en VS Code y habilitar el autocompletado de Pylance:
+
+1. Abre el proyecto en VS Code: `code .`
+2. Presiona **`Ctrl + Shift + P`** para abrir la paleta de comandos.
+3. Selecciona **`Python: Select Interpreter`**.
+4. Selecciona la ruta de tu entorno:
+   * **Para venv nativo:** `./qml_env/bin/python`
+   * **Para Conda:** `~/miniconda3/envs/qml_env/bin/python` (o la ruta correspondiente).
+
+---
+
+## 🏃‍♂️ Ejecución del Proyecto
+
+Con el entorno activo en tu terminal de Linux, ejecuta el punto de entrada principal:
+
+```bash
+python3 main.py
+```
 
 </details>
 
