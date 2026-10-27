@@ -26,12 +26,52 @@ Bienvenido al nexo del proyecto. Este repositorio aborda un mismo problema clín
 <details id="#-estructura-del-proyecto">
 <summary><b>📐 Estructura del proyecto</b></summary>
 
+El código está organizado por lo que se quiere mostrar: clasificación (QML), molécula (VQE) y modelo 3D.
+
+```
+qml_anemia_project/
+├── README.md
+├── main.py                      # menú interactivo para el live demo
+├── verificar_entorno.py         # revisa Python, versiones, PySCF y el callback del VQC
+├── requirements.txt             # dependencias (Windows, Mac y Linux)
+├── requirements-vqe.txt         # opcional: agrega PySCF (Linux, macOS, WSL o Colab)
+│
+├── common/
+│   └── compat.py                # elige las primitivas de Qiskit (V1 o V2) y silencia avisos
+│
+├── qml/                         # BLOQUE 1 · clasificación (demos 1 y 2)
+│   ├── datos.py                 # datos sintéticos: anemia (Hb, VCM) y lunas
+│   ├── modelo_vqc.py            # escalado, creación del VQC, callback y utilidades
+│   ├── diagnostico_anemia.py    # DEMO 1: diagnóstico con VQC
+│   ├── benchmark_vs_svm.py      # DEMO 2: VQC vs SVM (kernel RBF)
+│   ├── convergencia_lunas.py    # extra: curva de convergencia de la pérdida
+│   └── vqc_basico.py            # extra: VQC introductorio
+│
+├── vqe/                         # BLOQUE 2 · la molécula (demo 3)
+│   ├── geometrias.py            # geometrías: Fe–O (charla) y H2 (plan B)
+│   ├── motor_vqe.py             # integrales > Jordan-Wigner > UCCSD > VQE
+│   ├── datos_precalculados.json # integrales precalculadas (modo sin PySCF)
+│   ├── generar_precalculados.py # regenera ese archivo (requiere PySCF)
+│   ├── vqe_h2_intro.py          # intro: VQE de H2
+│   ├── comparacion_hemo.py      # DEMO 3: comparación de energías y ΔE
+│   └── hemo_core_avanzado.py    # avanzado: núcleo del hemo (requiere PySCF)
+│
+├── visor_3d/                    # BLOQUE 3 · modelo 3D (demo 4)
+│   ├── index.html               # visor molecular (3Dmol.js)
+│   ├── estilo.css
+│   ├── modelos.js               # estructuras PDB y estilos por anemia
+│   ├── visor.js                 # lógica del visor
+│   ├── servir.py                # servidor local (modo sin internet)
+│   └── pdb/                     # coloca aquí 1GZX.pdb, 2HBS.pdb y 1BMT.pdb
+│
+└── diapositivas/
+  └── dibujar_circuitos.py     # genera imágenes de los circuitos para las diapositivas
+
+```
+El extra de la estructura es el agregado de la presentación powerpoint
+
 </details>
 
-<details id="#-estructura-del-proyecto">
-<summary><b>📐 Estructura del proyecto</b></summary>
-
-</details>
 
 <details id="#-instalacion-del-proyecto">
 <summary><b>🚀 Instalación del proyecto</b></summary>
@@ -190,4 +230,135 @@ diferencias finitas en este caso).
 **NISQ**: era de dispositivos cuánticos con ruido y pocos qubits
 
 <br/>
+</details>
+
+
+<details id="#-anexos">
+<summary><b>📝 Anexos - notas </b></summary>
+
+
+## Demos y su relación con la presentación
+
+| Demo | Opción del menú | Qué muestra | Archivo |
+|---|---|---|---|
+| Demo 1 | 1 | Diagnóstico de anemia con VQC | `qml/diagnostico_anemia.py` |
+| Demo 2 | 2 | VQC contra SVM, con matrices de confusión | `qml/benchmark_vs_svm.py` |
+| Extra | 3 | Curva de convergencia de la pérdida | `qml/convergencia_lunas.py` |
+| Extra | 4 | VQC básico | `qml/vqc_basico.py` |
+| Intro | 5 | VQE de H₂ | `vqe/vqe_h2_intro.py` |
+| Demo 3 | 6 | Energías de dos geometrías y ΔE | `vqe/comparacion_hemo.py` |
+| Avanzado | 7 | Núcleo del hemo (8 qubits) | `vqe/hemo_core_avanzado.py` |
+| Demo 4 | 8 | Visor molecular 3D | `visor_3d/index.html` |
+| Recorrido | 9 | Encadena los demos 1, 2, 6 y 8 (solo para ensayar tiempos) | `main.py` |
+
+## Requisitos
+
+- Python 3.10 o superior (probado con 3.12).
+- Versiones con las que se probó el proyecto:
+
+| Paquete | Versión |
+|---|---|
+| qiskit | 2.5.2 |
+| qiskit-machine-learning | 0.9.1 |
+| qiskit-algorithms | 0.4.0 |
+| qiskit-nature | 0.8.0 |
+| scikit-learn | 1.8.0 |
+| numpy | 2.4.4 |
+| matplotlib | 3.10.8 |
+| pyscf (opcional) | 2.14.0 |
+
+- Para el visor 3D: un navegador e internet (descarga las estructuras de RCSB), o archivos PDB locales en `visor_3d/pdb/`.
+
+## Instalación
+
+```bash
+python -m venv .venv
+source .venv/bin/activate        # Windows PowerShell: .venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+```
+
+Con Anaconda:
+
+```bash
+conda create -n qml python=3.12 -y
+conda activate qml
+pip install -r requirements.txt
+```
+
+**PySCF es opcional.** No tiene soporte nativo en Windows. Sin él, el VQE usa las integrales precalculadas de `vqe/datos_precalculados.json` para las geometrías de la charla (Fe–O y H₂) y da los mismos resultados. PySCF solo hace falta para calcular geometrías nuevas y para `hemo_core_avanzado.py`:
+
+```bash
+pip install -r requirements-vqe.txt   # Linux, macOS, WSL o Colab
+```
+
+Verifica el entorno:
+
+```bash
+python verificar_entorno.py
+```
+
+Muestra qué Python usas, las versiones instaladas y si el callback del VQC se ejecuta («Callback ejecutado N veces: OK»).
+
+## Cómo ejecutar
+
+Siempre desde la carpeta raíz del proyecto (la que contiene `main.py`).
+
+```bash
+python main.py                                    # menú con todas las opciones
+python -m qml.diagnostico_anemia                  # demo 1
+python -m qml.diagnostico_anemia --mapa zz        # contraste con entrelazamiento
+python -m qml.benchmark_vs_svm                    # demo 2
+python -m qml.convergencia_lunas                  # curva de convergencia
+python -m vqe.vqe_h2_intro                        # intro VQE
+python -m vqe.comparacion_hemo                    # demo 3 (plan B: --modelo h2)
+python visor_3d/servir.py                         # visor 3D en http://localhost:8000
+python diapositivas/dibujar_circuitos.py          # imágenes de los circuitos
+```
+
+Las ventanas de gráficas (opciones 2 y 3) bloquean el menú hasta que las cierras.
+
+## Resultados de referencia
+
+Valores obtenidos en las pruebas; en tu equipo pueden variar un poco, sobre todo los del VQC.
+
+| Prueba | Resultado |
+|---|---|
+| VQE de H₂ | −1.857275 Ha (electrónica) y −1.137306 Ha (total) |
+| Demo 1, ZFeatureMap | 100 % en entrenamiento y en prueba; el paciente (Hb 8.5, VCM 110) sale macrocítico |
+| Demo 1, ZZFeatureMap | ≈ 50 % (el entrelazamiento no aporta: solo el VCM separa las clases) |
+| Demo 2 | SVM ≈ 96.7 % en ≈ 0.002 s; VQC entre 70 % y 90 % en ≈ 45 s |
+| Demo 3, Fe–O | E(2.8 Å) ≈ −1321.9177 Ha, E(1.7 Å) ≈ −1322.4282 Ha, ΔE ≈ −0.5105 Ha |
+| Núcleo del hemo | ≈ −1536.011 Ha con 8 qubits, ≈ 1 min (requiere PySCF) |
+
+## Solución de problemas
+
+| Problema | Solución |
+|---|---|
+| `Failed building wheel for pyscf` (Windows) | No hace falta PySCF: usa `pip install -r requirements.txt`. |
+| `Falta instalar: qiskit_nature` | Instala en el entorno activo con `pip install -r requirements.txt` y comprueba con `python verificar_entorno.py` que usas el Python correcto. |
+| La curva de convergencia sale vacía | Revisa en la salida la línea «Diagnóstico del callback»; asegúrate de no mezclar archivos de versiones distintas del proyecto. |
+| `No module named 'qml'` | Ejecuta desde la carpeta raíz, con `python main.py` o `python -m ...`. |
+| Avisos de `tkinter` al cerrar una gráfica | Son inofensivos; no afectan los resultados. |
+| La opción 7 dice que requiere PySCF | Es esperable sin PySCF; instálalo en Linux, macOS, WSL o Colab. |
+
+
+## Limitaciones
+
+- Los datos de anemia son **sintéticos** y las clases están separadas solo por el VCM.
+- Con hemoglobina y VCM no se distinguen la anemia ferropénica y la talasemia; el diagnóstico real usa más análisis.
+- El modelo Fe–O es un modelo didáctico (dos átomos, base STO-3G, 2 electrones en 2 orbitales), no la hemoglobina real.
+- No hay ventaja cuántica demostrada en estos problemas: la SVM clásica iguala o supera al VQC y es mucho más rápida.
+
+</details>
+
+
+<details id="#-licencias">
+<summary><b>📜 Licencia</b></summary>
+
+- **Autora:** Gamzeescript · 
+- **Repositorio:** `https://github.com/Gamzeescript/qml_anemia_project`
+- **Link a la presentación** `https://docs.google.com/presentation/d/1OLdV3kSXvZwXKAxCm5XlZ1eXhMqsL1SH_WDZKmWwWto/edit?usp=sharing`
+- **Licencia:** `Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.`
+- Construido con [Qiskit](https://www.ibm.com/quantum/qiskit), Qiskit Machine Learning, Qiskit Nature, PySCF, scikit-learn y [3Dmol.js](https://3dmol.csb.pitt.edu/).
+
 </details>
