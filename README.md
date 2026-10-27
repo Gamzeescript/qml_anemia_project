@@ -1,15 +1,7 @@
 <div align="center">
 
-⚛️ Aprendiendo de Computación cuántica mientras construimos un modelo sobre la molécula de Hierro
+###⚛️ Aprendiendo de Computación cuántica mientras construimos un modelo sobre la molécula de Hierro
 ⚛️
-
-*Superponiendo posibilidades, colapsando soluciones.*
-
-<p align="center">
-  <img src="https://img.shields.io/badge/State-|Ψ⟩_Superposition-8A2BE2?style=for-the-badge&logo=quantum&logoColor=white" alt="Quantum State">
-  <img src="https://img.shields.io/badge/Entanglement-Active-00FFFF?style=for-the-badge&logo=atom&logoColor=black" alt="Entanglement">
-  <img src="https://img.shields.io/badge/Qubits-1024_Active-FF007F?style=for-the-badge" alt="Qubits">
-</p>
 
 ---
 
@@ -19,19 +11,24 @@
 <br/>
 
 <!-- 🧭 MENÚ DE NAVEGACIÓN RÁPIDA (ENLACES INTERNOS) -->
-| [🌌 Visión General](#-visión-general-del-sistema) | [🚀 Instalación](#-sección-01-instalación-del-multiverso) | [❓ FAQ](#-sección-02-preguntas-frecuentes-faq) | [Glosario](#-sección-03-glosario-cuántico) |
+| [🌌 Visión General](#-visión-general-del-sistema) | [🚀 Instalación](#-sección-01-instalación-del-multiverso) | [❓ FAQ](#-sección-02-preguntas-frecuentes-faq) | [📖 Glosario](#-sección-03-glosario-cuántico) |
 | :---: | :---: | :---: | :---: |
 
 </div>
 
 <br/>
 
+<details id="#-visión-general-del-sistema">
+
 ## 🌌 Visión General del Sistema
 
-Bienvenido al nexo del proyecto. Este repositorio aborda un mismo problema clínico de salud —**la anemia**— a través de dos perspectivas complementarias de la computación cuántica en la era NISQ (dispositivos ruidosos de escala intermedia)[cite: 1, 2]:
+Bienvenido al nexo del proyecto. Este repositorio aborda un mismo problema clínico de salud —**la anemia**— a través de dos perspectivas complementarias de la computación cuántica en la era NISQ (dispositivos ruidosos de escala intermedia):
 
-1. **Clasificación con Quantum Machine Learning (QML):** Un Clasificador Cuántico Variacional (VQC) que utiliza un `ZZFeatureMap` y un ansatz `RealAmplitudes` para procesar y clasificar variables clínicas del hemograma (como hemoglobina y volumen corpuscular medio)[cite: 1, 2].
-2. **Simulación Cuántica Molecular:** Uso de VQE (Variational Quantum Eigensolver) para calcular energías del estado fundamental sobre espacios activos en moléculas de interés biológico (como el núcleo del hemo o la vitamina B12)[cite: 1].
+1. **Clasificación con Quantum Machine Learning (QML):** Un Clasificador Cuántico Variacional (VQC) que utiliza un `ZZFeatureMap` y un ansatz `RealAmplitudes` para procesar y clasificar variables clínicas del hemograma (como hemoglobina y volumen corpuscular medio).
+
+2. **Simulación Cuántica Molecular:** Uso de VQE (Variational Quantum Eigensolver) para calcular energías del estado fundamental sobre espacios activos en moléculas de interés biológico (como el núcleo del hemo o la vitamina B12).
+
+</details>
 
 <details id="#-sección-02-preguntas-frecuentes-faq">
 <summary><b>❓ SECCIÓN 02: Preguntas Frecuentes (FAQ)</b></summary>
