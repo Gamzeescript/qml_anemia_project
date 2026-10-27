@@ -18,7 +18,7 @@
 <br/>
 
 <!-- 🧭 MENÚ DE NAVEGACIÓN RÁPIDA (ENLACES INTERNOS) -->
-| [🌌 Visión General](#-visión-general-del-sistema) | [🚀 Instalación](#-sección-01-instalación-del-multiverso) | [❓ FAQ](#-sección-02-preguntas-frecuentes-faq) | [📖 Glosario](#-sección-03-glosario-cuántico) |
+| [🌌 Visión General](#-visión-general-del-sistema) | [🚀 Instalación](#-sección-01-instalación-del-multiverso) | [❓ FAQ](#-sección-02-preguntas-frecuentes-faq) | [Glosario](#-sección-03-glosario-cuántico) |
 | :---: | :---: | :---: | :---: |
 
 </div>
@@ -66,8 +66,47 @@ Bienvenido al nexo del proyecto. Este repositorio aborda un mismo problema clín
 
 
 <details id="#-sección-03-glosario-cuántico">
-<summary><b>❓ SECCIÓN 03: Glosario</b></summary>
+<summary><b>📖  SECCIÓN 03: Glosario</b></summary>
 
+**Qubit**: unidad de información cuántica; puede estar en superposición de 0 y 1.
+Entrelazamiento: correlación cuántica entre qubits que no se describe qubit por qubit;
+aquí lo crean las compuertas CX/ZZ.
+
+**Espacio de Hilbert**: el espacio matemático donde viven los estados de n qubits
+(dimensión 2ⁿ).
+
+**Feature map (ZZFeatureMap)**: circuito que codifica datos clásicos en un estado
+cuántico.
+
+**Ansatz (RealAmplitudes, UCCSD)**: circuito con parámetros ajustables; es el «modelo»
+que se entrena.
+
+**VQC - clasificador cuántico variacional**: feature map + ansatz + medición + optimizador
+clásico.
+
+**VQE -  algoritmo variacional que busca la energía mínima de un Hamiltoniano**:
+Hamiltoniano operador que describe la energía del sistema (aquí, de los electrones de
+la molécula).
+
+**Estado fundamental (E₀)**: el estado de menor energía; el más estable.
+
+**Hartree-Fock**: aproximación inicial de campo medio; punto de partida del VQE.
+
+**UCCSD**: ansatz de excitaciones simples y dobles que captura correlación electrónica.
+
+**Jordan–Wigner**: transformación que convierte operadores de electrones en
+operadores de Pauli sobre qubits.
+
+**Espacio activo**: subconjunto de electrones y orbitales que sí se simulan; el resto se
+trata de forma aproximada.
+
+**Sampler / Estimator - primitivas de Qiskit**: la primera entrega probabilidades de
+medición; la segunda, valores esperados de observables.
+
+**COBYLA / SLSQP**: optimizadores clásicos; COBYLA no usa gradientes y SLSQP sí (por
+diferencias finitas en este caso).
+
+**NISQ**: era de dispositivos cuánticos con ruido y pocos qubits
 
 <br/>
 </details>
