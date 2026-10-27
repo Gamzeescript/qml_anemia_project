@@ -32,7 +32,7 @@ Bienvenido al nexo del proyecto. Este repositorio aborda un mismo problema clín
 1. **Clasificación con Quantum Machine Learning (QML):** Un Clasificador Cuántico Variacional (VQC) que utiliza un `ZZFeatureMap` y un ansatz `RealAmplitudes` para procesar y clasificar variables clínicas del hemograma (como hemoglobina y volumen corpuscular medio)[cite: 1, 2].
 2. **Simulación Cuántica Molecular:** Uso de VQE (Variational Quantum Eigensolver) para calcular energías del estado fundamental sobre espacios activos en moléculas de interés biológico (como el núcleo del hemo o la vitamina B12)[cite: 1].
 
-<details id="-sección-02-preguntas-frecuentes-faq">
+<details id="#-sección-02-preguntas-frecuentes-faq">
 <summary><b>❓ SECCIÓN 02: Preguntas Frecuentes (FAQ)</b></summary>
 <br/>
 
@@ -62,4 +62,12 @@ Bienvenido al nexo del proyecto. Este repositorio aborda un mismo problema clín
 #### Q: ¿Por qué Jordan–Wigner?
 **R:** Es el mapeo más simple: un qubit por espín-orbital. Otros mapeos (Parity, Bravyi–Kitaev) pueden reducir la cantidad de qubits[cite: 35].
 
+</details>
+
+
+<details id="#-sección-03-glosario-cuántico">
+<summary><b>❓ SECCIÓN 03: Glosario</b></summary>
+
+
+<br/>
 </details>
