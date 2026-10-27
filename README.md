@@ -1,9 +1,9 @@
 <div align="center">
 
-# ⚛️ Aprendiendo de Computación cuántica mientras construimos un modelo sobre la molécula de Hierro
+⚛️ Aprendiendo de Computación cuántica mientras construimos un modelo sobre la molécula de Hierro
 ⚛️
 
-### *Superponiendo posibilidades, colapsando soluciones.*
+*Superponiendo posibilidades, colapsando soluciones.*
 
 <p align="center">
   <img src="https://img.shields.io/badge/State-|Ψ⟩_Superposition-8A2BE2?style=for-the-badge&logo=quantum&logoColor=white" alt="Quantum State">
