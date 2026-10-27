@@ -1,6 +1,7 @@
 <div align="center">
 
-# ⚛️ `PROJECT::QUANTUM_CORE` ⚛️
+# ⚛️ Aprendiendo de Computación cuántica mientras construimos un modelo sobre la molécula de Hierro
+⚛️
 
 ### *Superponiendo posibilidades, colapsando soluciones.*
 
