@@ -32,11 +32,9 @@ Bienvenido al nexo del proyecto. Este repositorio aborda un mismo problema clín
 1. **Clasificación con Quantum Machine Learning (QML):** Un Clasificador Cuántico Variacional (VQC) que utiliza un `ZZFeatureMap` y un ansatz `RealAmplitudes` para procesar y clasificar variables clínicas del hemograma (como hemoglobina y volumen corpuscular medio)[cite: 1, 2].
 2. **Simulación Cuántica Molecular:** Uso de VQE (Variational Quantum Eigensolver) para calcular energías del estado fundamental sobre espacios activos en moléculas de interés biológico (como el núcleo del hemo o la vitamina B12)[cite: 1].
 
-<details id="faq">
+<details id="-sección-02-preguntas-frecuentes-faq">
 <summary><b>❓ SECCIÓN 02: Preguntas Frecuentes (FAQ)</b></summary>
 <br/>
-
-
 
 ### 💡 Dudas Comunes sobre el Núcleo Cuántico
 
