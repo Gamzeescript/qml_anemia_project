@@ -1,6 +1,6 @@
 <div align="center">
 
-###⚛️ Aprendiendo de Computación cuántica mientras construimos un modelo sobre la molécula de Hierro
+### ⚛️ Aprendiendo de Computación cuántica mientras construimos un modelo sobre la molécula de Hierro
 ⚛️
 
 ---
@@ -19,6 +19,7 @@
 <br/>
 
 <details id="#-visión-general-del-sistema">
+<summary><b>🌌 Visión General</b></summary>
 
 ## 🌌 Visión General del Sistema
 
