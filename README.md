@@ -362,3 +362,8 @@ Valores obtenidos en las pruebas; en tu equipo pueden variar un poco, sobre todo
 - Construido con [Qiskit](https://www.ibm.com/quantum/qiskit), Qiskit Machine Learning, Qiskit Nature, PySCF, scikit-learn y [3Dmol.js](https://3dmol.csb.pitt.edu/).
 
 </details>
+
+<div align="center">
+<img width="250" align="left" src="https://github.com/Gamzeescript/qml_anemia_project/blob/Maestro/aesthetic%20readme/schro.jpeg">
+
+</div>
