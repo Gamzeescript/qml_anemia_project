@@ -2,6 +2,8 @@
 
 ### ⚛️ Quantum Machine Learning - De Qubits a Moléculas ⚛️
 
+<br><br>
+
 ---
 
 > *"Si crees que entiendes la mecánica cuántica, es que no entiendes la mecánica cuántica."*  
@@ -363,7 +365,7 @@ Valores obtenidos en las pruebas; en tu equipo pueden variar un poco, sobre todo
 
 </details>
 
-<div align="center">
-<img width="250" align="left" src="https://github.com/Gamzeescript/qml_anemia_project/blob/Maestro/aesthetic%20readme/schro.jpeg">
 
-</div>
+
+<img width="250" align="center" src="https://github.com/Gamzeescript/qml_anemia_project/blob/Maestro/aesthetic%20readme/schro.jpeg">
+
