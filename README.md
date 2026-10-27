@@ -153,6 +153,90 @@ Antes de comenzar, asegúrate de contar con lo siguiente en tu equipo (entorno W
 * **[Anaconda](https://www.anaconda.com/) o [Miniforge](https://github.com/conda-forge/miniforge):** Esencial para gestionar entornos virtuales y evitar errores de compilación con las librerías de C/C++ (como PySCF).
 * **[Visual Studio Code (VS Code)](https://code.visualstudio.com/):** Entorno de desarrollo recomendado, con las extensiones de **Python** y **Pylance** instaladas.
 
+
+## 🚀 Guía de Instalación y Configuración Paso a Paso (Linux)
+
+Puedes elegir entre la instalación nativa con **`venv` / `pip`** (recomendada para la mayoría de distros de Linux) o mediante **Conda**.
+
+### Opción A: Instalación Nativa en Linux (`venv` + `pip`)
+
+#### 1. Instalar dependencias del sistema operativo
+Abre la terminal de Linux (`Ctrl + Alt + T`) e instala las herramientas esenciales de compilación y headers de Python:
+```bash
+sudo apt update
+sudo apt install -y python3-pip python3-venv python3-dev build-essential
+```
+
+#### 2. Clonar / Ubicarte en el directorio del proyecto
+Navega hasta la carpeta local de tu repositorio:
+```bash
+cd ~/qml_anemia_project
+```
+
+#### 3. Crear el entorno virtual
+Crea un entorno aislado llamado `qml_env`:
+```bash
+python3 -m venv qml_env
+```
+
+#### 4. Activar el entorno virtual
+```bash
+source qml_env/bin/activate
+```
+*(Verás la etiqueta `(qml_env)` al inicio de la línea de comandos).*
+
+#### 5. Actualizar `pip` e instalar dependencias
+```bash
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+> **Nota:** Si no utilizas `requirements.txt`, puedes instalar las librerías manualmente:
+> ```bash
+> pip install numpy scikit-learn pyscf qiskit qiskit-nature qiskit-machine-learning qiskit-algorithms
+> ```
+
+---
+
+### Opción B: Instalación con Conda / Miniforge en Linux
+
+Si prefieres usar Conda en Linux:
+
+```bash
+# 1. Crear entorno con Python 3.10
+conda create -n qml_env python=3.10 -y
+
+# 2. Activar entorno
+conda activate qml_env
+
+# 3. Instalar librerías
+conda install -c conda-forge pyscf numpy scikit-learn qiskit -y
+pip install qiskit-nature qiskit-machine-learning qiskit-algorithms
+```
+
+---
+
+## ⚙️ Configuración en Visual Studio Code
+
+Para vincular el entorno en VS Code y habilitar el autocompletado de Pylance:
+
+1. Abre el proyecto en VS Code: `code .`
+2. Presiona **`Ctrl + Shift + P`** para abrir la paleta de comandos.
+3. Selecciona **`Python: Select Interpreter`**.
+4. Selecciona la ruta de tu entorno:
+   * **Para venv nativo:** `./qml_env/bin/python`
+   * **Para Conda:** `~/miniconda3/envs/qml_env/bin/python` (o la ruta correspondiente).
+
+---
+
+## 🏃‍♂️ Ejecución del Proyecto
+
+Con el entorno activo en tu terminal de Linux, ejecuta el punto de entrada principal:
+
+```bash
+python3 main.py
+```
+
+
 </details>
 
 
@@ -184,7 +268,7 @@ Antes de comenzar, asegúrate de contar con lo siguiente en tu equipo (entorno W
 **R:** COBYLA no necesita gradientes y tolera el ruido de muestreo, por eso se usa en el VQC. SLSQP usa gradientes y funciona bien en el VQE con simulación exacta (sin ruido)[cite: 35].
 
 #### Q: ¿Por qué Jordan–Wigner?
-**R:** Es el mapeo más simple: un qubit por espín-orbital. Otros mapeos (Parity, Bravyi–Kitaev) pueden reducir la cantidad de qubits[cite: 35].
+**R:** Es el mapeo más simple: un qubit por espín-orbital. Otros mapeos (Parity, Bravyi–Kitaev) pueden reducir la cantidad de qubits.
 
 </details>
 
@@ -288,16 +372,10 @@ conda activate qml
 pip install -r requirements.txt
 ```
 
-**PySCF es opcional.** No tiene soporte nativo en Windows. Sin él, el VQE usa las integrales precalculadas de `vqe/datos_precalculados.json` para las geometrías de la charla (Fe–O y H₂) y da los mismos resultados. PySCF solo hace falta para calcular geometrías nuevas y para `hemo_core_avanzado.py`:
+**PySCF es opcional.** No tiene soporte nativo en Windows (por eso mismo se utilizó anaconda). Sin él, el VQE usa las integrales precalculadas de `vqe/datos_precalculados.json` para las geometrías de la charla (Fe–O y H₂) y da los mismos resultados. PySCF solo hace falta para calcular geometrías nuevas y para `hemo_core_avanzado.py`:
 
 ```bash
 pip install -r requirements-vqe.txt   # Linux, macOS, WSL o Colab
-```
-
-Verifica el entorno:
-
-```bash
-python verificar_entorno.py
 ```
 
 Muestra qué Python usas, las versiones instaladas y si el callback del VQC se ejecuta («Callback ejecutado N veces: OK»).
