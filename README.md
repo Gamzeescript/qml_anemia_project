@@ -11,6 +11,7 @@
 
 </div>
 
+<br><br>
 
 <details id="#-visión-general-del-sistema">
 <summary><b>🌌 Visión General</b></summary>
@@ -365,7 +366,10 @@ Valores obtenidos en las pruebas; en tu equipo pueden variar un poco, sobre todo
 
 </details>
 
+<br><br>
 
+<p align="center">
 
-<img width="250" align="center" src="https://github.com/Gamzeescript/qml_anemia_project/blob/Maestro/aesthetic%20readme/schro.jpeg">
+<img width="250"  src="https://github.com/Gamzeescript/qml_anemia_project/blob/Maestro/aesthetic%20readme/schro.jpeg">
 
+</p>
